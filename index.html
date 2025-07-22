@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="html,css,javascript,metadata">
     <meta name="revised" content="anthony14/08/24">
@@ -30,6 +31,26 @@
             width: 200px;
             border-radius: 30px;
         }
+        .container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+  .banner {
+    flex-direction: column;
+  }
+}
+.banner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Important for small screens */
+}
+
     </style>
 
     <style>
