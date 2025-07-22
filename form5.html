@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up Form</title>
+    <style type="text/css">
+        body {
+            background-color: #f2b6cc;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #444;
+        }
+        form {
+            width: 100%;
+            margin-top: 20px;
+        }
+        input[type="text"], textarea, select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: red;
+        }
+        .feedback {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #d9534f;
+            display: none;
+        }
+        .success {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Join Our Class</h2>
+    <p>Fill out the form to be among the chosen ones in our class. Learn well and you can earn a certificate.</p>
+    
+    <form id="signupForm" method="post">
+        <input type="text" id="username" name="username" placeholder="Name" required maxlength="45"><br>
+        <div id="usernameFeedback" class="feedback">Name cannot be empty.</div>
+
+        <input type="text" id="age" name="AGE" placeholder="AGE" maxlength="2" required><br>
+        <div id="ageFeedback" class="feedback">Please enter a valid age between 1 and 99.</div>
+
+        <button type="submit">Sign Up</button>
+        <div id="formFeedback" class="feedback success"></div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        let isValid = true;
+        let username = document.getElementById('username').value.trim();
+        let age = document.getElementById('age').value.trim();
+        let usernameFeedback = document.getElementById('usernameFeedback');
+        let ageFeedback = document.getElementById('ageFeedback');
+        let formFeedback = document.getElementById('formFeedback');
+        
+        // Reset feedback messages
+        usernameFeedback.style.display = 'none';
+        ageFeedback.style.display = 'none';
+        formFeedback.style.display = 'none';
+
+        // Validate username
+        if (username === "") {
+            usernameFeedback.style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate age
+        if (age === "" || isNaN(age) || age < 1 || age > 99) {
+            ageFeedback.style.display = 'block';
+            isValid = false;
+        }
+
+        if (isValid) {
+            formFeedback.style.display = 'block';
+            formFeedback.textContent = "Thank you for signing up, " + username + "!";
+            formFeedback.classList.add('success');
+
+            // Redirect to another page after successful form submission
+            setTimeout(function() {
+                window.location.href = "file:///C:/Users/user/Documents/romm.html?"; // Change this URL to the desired destination
+            }, 2000); // Redirect after 2 seconds to give the user time to see the success message
+        }
+    });
+</script>
+
+</body>
+</html>
